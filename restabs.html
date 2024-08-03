@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Tabs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: space-around;
+            background-color: #f1f1f1;
+            padding: 10px;
+        }
+
+        .tab-button {
+            padding: 10px 20px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .tab-button.active, .tab-button:hover {
+            background-color: #ddd;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="tabs">
+        <button class="tab-button active" data-tab="tab1">Tab 1</button>
+        <button class="tab-button" data-tab="tab2">Tab 2</button>
+        <button class="tab-button" data-tab="tab3">Tab 3</button>
+    </div>
+    <div class="tab-content active" id="tab1">
+        <h2>Tab 1 Content</h2>
+        <p>my name is abhishek.</p>
+    </div>
+    <div class="tab-content" id="tab2">
+        <h2>Tab 2 Content</h2>
+        <p>i completed my graduation in 2023.</p>
+    </div>
+    <div class="tab-content" id="tab3">
+        <h2>Tab 3 Content</h2>
+        <p>i am a web developer.</p>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const tabButtons = document.querySelectorAll(".tab-button");
+            const tabContents = document.querySelectorAll(".tab-content");
+
+            function switchTab(button) {
+                tabButtons.forEach(btn => btn.classList.remove("active"));
+
+                    content.classList.remove("active");
+                    if (content.id === tabId) {
+                        content.classList.add("active");
+                    }
+                });
+            }
+
+            tabButtons.forEach(button => {
+                button.addEventListener("click", () => {
+                    if (window.innerWidth <= 600) {
+                        tabContents.forEach(content => content.classList.remove("active"));
+                        if  (!isActive) {
+                            content.classList.add("active");
+                        }
+                    } else {
+                        switchTab(button);
+                    }
+                });
+            });
+
+            window.addEventListener("resize", () => {
+                if (window.innerWidth > 600) {
+                    const activeButton = document.querySelector(".tab-button.active");
+                    if (activeButton) {
+                        switchTab(activeButton);
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
